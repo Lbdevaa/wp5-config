@@ -1,4 +1,8 @@
-const  MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const path = require('path');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin'); 
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+
 let mode = 'development';
 let target = 'web'; //fix for live reload
 
@@ -12,6 +16,7 @@ module.exports = {
   target: target,
 
   output: {
+    path: path.resolve(__dirname, 'dist'),
     assetModuleFilename: 'img/[hash][ext][query]'
   },
   module: {
@@ -53,7 +58,11 @@ module.exports = {
   },
 
   plugins: [
-    new MiniCssExtractPlugin()
+    new CleanWebpackPlugin(),
+    new MiniCssExtractPlugin(),
+    new HtmlWebpackPlugin({
+      template: './src/index.html'
+    }),
   ],
 
   resolve: {
