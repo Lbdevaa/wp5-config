@@ -3,7 +3,8 @@
   "scripts": {
     "start": "webpack serve",
     "watch": "webpack --watch",
-    "build": "set NODE_ENV=production&&webpack",
+    "build": "NODE_ENV=production webpack",
+    "buildwin": "set NODE_ENV=production&&webpack",
     "build-dev": "webpack",
     "clean": "rd /s /q dist"
   },
