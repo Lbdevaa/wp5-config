@@ -17,7 +17,8 @@ const plugins = [
 if (process.env.NODE_ENV === 'production') {
   mode = 'production';
   target = 'browserslist';
-} else {
+} 
+if (process.env.SERVE) {
   plugins.push(new ReactRefreshWebpackPlugin());
 }
 
@@ -29,7 +30,7 @@ module.exports = {
 
   output: {
     path: path.resolve(__dirname, 'dist'),
-    assetModuleFilename: 'img/[hash][ext][query]'
+    assetModuleFilename: 'img/[name]-[hash:7][ext][query]', 
   },
   module: {
     rules: [
